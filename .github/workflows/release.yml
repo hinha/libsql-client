@@ -50,11 +50,8 @@ jobs:
 
       # Bundle with esbuild + libsql stub
       - name: Bundle
-        run: |
-          npx esbuild dist/index.js \
-            --bundle --platform=node --target=node22 \
-            --outfile=sea-bundle.cjs --format=cjs \
-            --alias:libsql=./stubs/libsql.mjs
+        shell: bash
+        run: npx esbuild dist/index.js --bundle --platform=node --target=node22 --outfile=sea-bundle.cjs --format=cjs --alias:libsql=./stubs/libsql.mjs
 
       # Create Node.js SEA binary
       - name: Create SEA binary
