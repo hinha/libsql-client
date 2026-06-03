@@ -7,13 +7,25 @@
   "bin": {
     "libsql-mcp": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "node -e \"const v=process.env.npm_package_version||'dev';require('fs').writeFileSync('src/version.ts','export const VERSION = \\\"'+v+'\\\";\\n')\" && tsc && node -e \"const fs=require('fs');const f='dist/index.js';const c=fs.readFileSync(f,'utf8');if(!c.startsWith('#!'))fs.writeFileSync(f,'#!/usr/bin/env node\\n'+c)\"",
     "start": "node dist/index.js",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
   },
   "keywords": ["libsql", "turso", "mcp", "database", "ai"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hinha/libsql-client.git"
+  },
+  "homepage": "https://github.com/hinha/libsql-client#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@modelcontextprotocol/sdk": "^1.12.0",
