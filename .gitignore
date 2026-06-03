@@ -7,5 +7,6 @@ dist/
 sea-bundle.cjs
 sea-prep.blob
 sea-config.json
-libsql-mcp*
-/stubs/*
+libsql-mcp-macos-arm64
+libsql-mcp-linux-x64
+libsql-mcp-win-x64.exe
